@@ -10,23 +10,27 @@ import org.serg.framework.managers.DriverManager;
 public class MethodsUtils extends BasePage {
 
     /**
-     *
      * @param nameBox название чекбокса
      */
-    public void choiceChekBox(String nameBox,String offOn) {
+    static int count = 0;
+
+    public void choiceChekBox(String nameBox, String offOn) {
         String xPath = "//span[text()='" + nameBox + "']//../..//input[@class='switch-input-3-1-2']";
         WebElement webElement = DriverManager.getDriverManager().getDriver().findElement(By.xpath(xPath));
-        if(webElement.getAttribute("ariaChecked").equalsIgnoreCase("true")
-                || offOn.equalsIgnoreCase("Выключить")){
+        if (offOn.equalsIgnoreCase("Выключить") || count == 0) {
+            count = 1;
+            webElement.click();
+        } else if (offOn.equalsIgnoreCase("Включить") || count == 1) {
+            count = 0;
             webElement.click();
         }
+
     }
 
 
     /**
-     *
      * @param nameField название поля
-     * @param value значение для проверки
+     * @param value     значение для проверки
      */
     public void checkField(String nameField, String value) {
         String xPath = "//span[contains(text(),'" + nameField + "')]//..//span[contains(@data-e2e-id,'mland-calculator')]";
@@ -59,8 +63,6 @@ public class MethodsUtils extends BasePage {
         Assertions.assertEquals(webElement.getAttribute("defaultValue")
                 .replaceAll("\\D*", ""), value, "Поле введено не верно");
     }
-
-
 
 
 }

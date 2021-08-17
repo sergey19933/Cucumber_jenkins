@@ -38,6 +38,7 @@ public class MortgageForSecondaryHousing extends BasePage {
     //  @Step("Проверяем что открылась страница 'Ипотека'")
     public MortgageForSecondaryHousing checkMortgageForSecondaryHousingPage() {
         Assertions.assertEquals("Ипотека от 7,7%* на готовые квартиры", title.getAttribute("innerText"));
+
         return this;
     }
 
@@ -66,7 +67,7 @@ public class MortgageForSecondaryHousing extends BasePage {
      */
     // @Step("Заполняем поле '{nameField}' значением '{value}'")
     public MortgageForSecondaryHousing fillFieldPage(String nameField, String value) {
-        pageManager.getMethodsUtilsPage().fillInputField(nameField, value);
+      pageManager.getMethodsUtilsPage(). fillInputField(nameField, value);
         return this;
     }
 
@@ -80,8 +81,8 @@ public class MortgageForSecondaryHousing extends BasePage {
 
 
     //   @Step("Отключаем страхование жизни")
-    public MortgageForSecondaryHousing clickCheckboxPage(String nameBox,String offOn) {
-        pageManager.getMethodsUtilsPage().choiceChekBox(nameBox,offOn);
+    public MortgageForSecondaryHousing clickCheckboxPage(String nameBox, String offOn) {
+        pageManager.getMethodsUtilsPage().choiceChekBox(nameBox, offOn);
         return this;
     }
 
@@ -110,10 +111,16 @@ public class MortgageForSecondaryHousing extends BasePage {
 
 
     // @Step("Проверка поля ежем плат")
-    public MortgageForSecondaryHousing checkFieldPage(String nameField,String value) {
-        pageManager.getMethodsUtilsPage().checkField(nameField,value);
+    public MortgageForSecondaryHousing checkFieldPage(String nameField, String value) {
+       pageManager.getMethodsUtilsPage().checkField(nameField, value);
         return this;
     }
+
+
+
+
+
+
 
 
 

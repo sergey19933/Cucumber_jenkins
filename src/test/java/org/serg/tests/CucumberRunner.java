@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm"},
+        plugin = {"org.serg.framework.utils.MyListnerAllure"},
         glue = {"org.serg.framework.steps"},
         features = {"src/test/resources/"},
         tags = "@firstTest"
